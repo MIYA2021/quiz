@@ -1,0 +1,28 @@
+body {
+    background-image: url('disney-background.jpg'); /* ディズニー風の背景画像 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#quiz-container {
+    background-color: rgba(255, 255, 255, 0.9); /* 白色の透明度を調整 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#question {
+    font-family: 'Disney', cursive; /* ディズニー風のフォント */
+    color: #ff6f61; /* ディズニー風の赤色 */
+}
+
+.choice {
+    font-family: 'Disney', cursive; /* ディズニー風のフォント */
+    border: 2px solid #ff6f61; /* ディズニー風の赤色 */
+    color: #ff6f61; /* ディズニー風の赤色 */
+    background-color: rgba(255, 255, 255, 0.8); /* 白色の透明度を調整 */
+}
+
+.choice:hover {
+    background-color: #ff6f61; /* ディズニー風の赤色 */
+    color: #fff;
+}
