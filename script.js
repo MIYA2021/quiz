@@ -219,20 +219,27 @@ var questions = [
 ];
 
 var currentQuestionIndex;
+var quizCount; // 新たに追加された変数
 
 function initQuiz() {
     currentQuestionIndex = -1;
+    quizCount = 0; // 初期化
     nextQuestion();
 }
 
 function nextQuestion() {
-    var randomIndex;
-    do {
-        randomIndex = Math.floor(Math.random() * questions.length);
-    } while (randomIndex === currentQuestionIndex);
+    if (quizCount < 5) {
+        var randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * questions.length);
+        } while (randomIndex === currentQuestionIndex);
 
-    currentQuestionIndex = randomIndex;
-    displayQuestion();
+        currentQuestionIndex = randomIndex;
+        displayQuestion();
+    } else {
+        alert("クイズ終了！正解数: " + quizCount);
+        quizCount = 0; // カウントをリセット
+    }
 }
 
 function displayQuestion() {
@@ -251,6 +258,7 @@ function checkAnswer(choiceIndex) {
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
         alert("正解！\n" + currentQuestion.explanation);
+        quizCount++;
     } else {
         // 不正解の場合
         var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
