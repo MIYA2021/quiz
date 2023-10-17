@@ -39,3 +39,10 @@ body {
     background-color: #0069aa; /* ディズニー風の青色 */
     color: #fff;
 }
+
+#quiz-count {
+    font-family: 'Disney', cursive; /* ディズニー風のフォント */
+    font-size: 24px;
+    color: #ff6f61; /* ディズニー風の赤色 */
+    margin-bottom: 20px;
+}
