@@ -161,6 +161,12 @@ var questions = [
         choices: ["8分", "14分", "88分"],
         correctIndex: 2,
         explanation: "8は『ハチ』、14は『イーヨー』なので88は無い"
+    },  
+    {
+        question: "アリスに出てくるハートの女王は白いばらを染めろと言ったがなんの色？",
+        choices: ["赤", "青", "黒"],
+        correctIndex: 0,
+        explanation: " "
     },
 ];
 
