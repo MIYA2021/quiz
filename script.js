@@ -155,6 +155,11 @@ var questions = [
         choices: ["グリニングゴースト", "マダムレオタ", "ゴーストホスト"],
         correctIndex: 0
     },
+    {
+        question: "プーさんのハニーハントで待ち時間にないものは何？",
+        choices: ["8分", "14分", "88分"],
+        correctIndex: 2
+    },
 ];
 
 var currentQuestionIndex;
