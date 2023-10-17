@@ -13,10 +13,11 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 #question {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #ff6f00; /* オレンジ色 */
@@ -25,10 +26,11 @@ body {
 .choice {
     background-color: #ff6f00; /* オレンジ色 */
     color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 15px;
+    margin-bottom: 15px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: background-color 0.3s ease-in-out;
 }
 
