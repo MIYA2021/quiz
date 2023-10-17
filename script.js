@@ -192,6 +192,12 @@ var questions = [
         correctIndex: 0,
         explanation: " "
     },
+    {
+        question: "イッツ・ア・スモールワルドに出てくるキャラクターはどれ？",
+        choices: ["プルート", "スティッチ", "ウッディ"],
+        correctIndex: 1,
+        explanation: " "
+    },
 ];
 
 var currentQuestionIndex;
