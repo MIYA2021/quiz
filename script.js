@@ -219,27 +219,40 @@ var questions = [
 ];
 
 var currentQuestionIndex;
-var quizCount; // 新たに追加された変数
+var quizCount;
 
 function initQuiz() {
     currentQuestionIndex = -1;
-    quizCount = 0; // 初期化
+    quizCount = 0;
     nextQuestion();
 }
 
 function nextQuestion() {
-    if (quizCount < 5) {
-        var randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * questions.length);
-        } while (randomIndex === currentQuestionIndex);
-
-        currentQuestionIndex = randomIndex;
-        displayQuestion();
-    } else {
-        alert("クイズ終了！正解数: " + quizCount);
-        quizCount = 0; // カウントをリセット
+    // クイズ回数が5に達したら終了
+    if (quizCount >= 5) {
+        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？");
+        if (resetConfirmation) {
+            // リセットの場合
+            initQuiz();
+        } else {
+            // リセットしない場合
+            alert("お疲れ様でした！とてもいい成果でした!!");
+        }
+        return;
     }
+
+    var randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === currentQuestionIndex);
+
+    currentQuestionIndex = randomIndex;
+    displayQuestion();
+
+    // クイズ回数を増加
+    quizCount++;
+    // HTML にクイズ回数を反映
+    document.getElementById('count').textContent = quizCount;
 }
 
 function displayQuestion() {
@@ -258,7 +271,6 @@ function checkAnswer(choiceIndex) {
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
         alert("正解！\n" + currentQuestion.explanation);
-        quizCount++;
     } else {
         // 不正解の場合
         var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
