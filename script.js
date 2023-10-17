@@ -218,92 +218,47 @@ var questions = [
     },
 ];
 
-var questions = [
-    { question: "1 + 1は？", choices: ["2", "3", "4"], correctIndex: 0 },
-    { question: "2 × 3は？", choices: ["5", "6", "7"], correctIndex: 1 },
-    { question: "10 ÷ 2は？", choices: ["3", "4", "5"], correctIndex: 2 },
-    { question: "3 - 2は？", choices: ["0", "1", "2"], correctIndex: 1 },
-    { question: "4 × 5は？", choices: ["16", "18", "20"], correctIndex: 2 }
-];
-
-var currentQuestionIndex = 0;
-var correctCount = 0;
-var quizCount = 0;
+var currentQuestionIndex;
 
 function initQuiz() {
-    currentQuestionIndex = 0;
-    correctCount = 0;
-    quizCount = 0;
+    currentQuestionIndex = -1;
     nextQuestion();
 }
 
 function nextQuestion() {
-    // ランダムに次の質問のインデックスを選択
-    const randomIndex = Math.floor(Math.random() * questions.length);
+    var randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === currentQuestionIndex);
 
-    // 同じ問題が連続して出ないようにする
-    currentQuestionIndex = (randomIndex !== currentQuestionIndex) ? randomIndex : (randomIndex + 1) % questions.length;
-
-    // 質問を表示
+    currentQuestionIndex = randomIndex;
     displayQuestion();
 }
 
 function displayQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
-    const choices = document.getElementsByClassName('choice');
-    for (let i = 0; i < choices.length; i++) {
+    var choices = document.getElementsByClassName('choice');
+    for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = currentQuestion.choices[i];
     }
 }
 
 function checkAnswer(choiceIndex) {
-    quizCount++;
+    var currentQuestion = questions[currentQuestionIndex];
 
-    const currentQuestion = questions[currentQuestionIndex];
     if (choiceIndex === currentQuestion.correctIndex) {
-        alert("正解！");
-        correctCount++;
+        // 正解の場合
+        alert("正解！\n" + currentQuestion.explanation);
     } else {
-        alert("不正解...\n正解は: " + currentQuestion.choices[currentQuestion.correctIndex]);
+        // 不正解の場合
+        var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
+        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
     // 次の質問に進む
     nextQuestion();
-}
-
-function resetQuiz() {
-    initQuiz();
-}
-
-function showResult() {
-    alert("クイズ終了！\n正解数: " + correctCount + "\nクイズ回数: " + quizCount);
-    sendQuizData(); // クイズデータを送信
-}
-
-function sendQuizData() {
-    const data = {
-        quizCount: quizCount,
-        correctCount: correctCount
-    };
-
-    // Google Apps ScriptのウェブアプリケーションのURL
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyJRg-AEbiX80W1p2oli3vq8_u-HmR9oJmH08fT_2dMGHAukDaZ6IjBksvUS-bmzLip/exec';
-
-    // データを送信
-    fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch((error) => {
-        console.error('Error:', error);
-    });
 }
 
 // クイズ初期化
