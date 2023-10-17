@@ -52,7 +52,8 @@ var questions = [
     {
         question: "ホーンテッドマンションの館のなかにある時計は、12の部分はどれか？",
         choices: ["15", "13", "19"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: "13は呪いの数字と言われているから!!"
     },
     {
         question: "ホーンテッドマンションがあるテーマランドは？",
@@ -89,11 +90,6 @@ var questions = [
         question: "ホーンテッドマンションのアトラクション乗り場のベルトコンベアにあるイラストは何か。",
         choices: ["コウモリ", "蜘蛛", "スカル"],
         correctIndex: 0
-    },
-    {
-        question: "ホーンテッドマンションには隠れたキャラクターがいるが、ないものはどれか。",
-        choices: ["ミッキー", "ミニー", "ドナルド"],
-        correctIndex: 2
     },
     {
         question: "ホーンテッドマンションには隠れたキャラクターがいるが、ないものはどれか。",
