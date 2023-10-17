@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5; /* ページの背景色 */
+    background-color: #ffe4b5; /* ページの背景色 (ミスティックアルモンド) */
     color: #333; /* ページの文字色 */
 }
 
@@ -10,7 +10,7 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff; /* クイズコンテナの背景色 */
+    background-color: #fff; /* クイズコンテナの背景色 (ホワイト) */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
 }
@@ -19,11 +19,11 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #009688; /* 質問の文字色 */
+    color: #ff4500; /* 質問の文字色 (オレンジレッド) */
 }
 
 .choice {
-    background-color: #009688; /* 選択肢の背景色 */
+    background-color: #ff69b4; /* 選択肢の背景色 (ピンク) */
     color: #fff; /* 選択肢の文字色 */
     padding: 10px;
     margin-bottom: 10px;
@@ -32,10 +32,10 @@ body {
 }
 
 .choice:hover {
-    background-color: #00796b; /* ホバー時の背景色 */
+    background-color: #ff1493; /* ホバー時の背景色 (ディープピンク) */
 }
 
-/* ホーンテッドマンション風のスタイルを追加 */
+/* ハロウィン風のスタイルを追加 */
 #quiz-container::before {
     content: '';
     display: block;
@@ -45,21 +45,8 @@ body {
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
-    background-image: url('path/to/haunted-mansion-bg.jpg'); /* ホーンテッドマンション風の背景画像 */
+    background-image: url('path/to/halloween-bg.jpg'); /* ハロウィン風の背景画像 */
     background-size: cover;
-    z-index: -1;
-    opacity: 0.2;
-}
-
-#quiz-container::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, #663399, #8a2be2); /* ディズニー風のグラデーション */
     z-index: -1;
     opacity: 0.2;
 }
