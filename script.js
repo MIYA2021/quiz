@@ -1,15 +1,5 @@
 var questions = [
-    {
-        question: "ソアリン：ファンタスティック・フライトで最後に到着する場所といえばどこ？",
-        choices: ["東京ディズニーランド", "東京ディズニーシー", "東京スカイツリー"],
-        correctIndex: 1,
-        explanation: "『９』だと苦しいという語呂合わせになってしまうから"
-    },
-    {
-        question: "トイ・ストーリー3に出てくるスタジオジブリ作品のキャラクターは？",
-        choices: ["トトロ", "こだま", "カオナシ"],
-        correctIndex: 0
-    },
+
     {
         question: "ミッキーマウスとミニーマウスの誕生日は？",
         choices: ["5/25", "9/5", "11/18"],
@@ -36,11 +26,6 @@ var questions = [
         correctIndex: 1
     },
     {
-        question: "ファインディング・ニモの元となった魚の種類は？",
-        choices: ["ミドリフエフキ", "ナンヨウハギ", "カクレクマノミ"],
-        correctIndex: 2
-    },
-    {
         question: "シンデレラが乗っていた馬車はなんの食べ物？",
         choices: ["りんご", "かぼちゃ", "メロン"],
         correctIndex: 1
@@ -56,11 +41,6 @@ var questions = [
         correctIndex: 1
     },
     {
-        question: "ディズニーシーの入り口にある地球儀の名前は？",
-        choices: ["アクアスフィア", "ユートピア", "ディストピア"],
-        correctIndex: 0
-    },
-    {
         question: "バズ・ライトイヤーの敵キャラといえばどれ？",
         choices: ["ヘレックス", "ギーグ", "ザーグ"],
         correctIndex: 2
@@ -69,12 +49,6 @@ var questions = [
         question: "モンスターズインクに出てくる女の子の名前は？",
         choices: ["ビー", "ブー", "ベー"],
         correctIndex: 1
-    },
-    
-    {
-        question: "次のダッフィーレンズのうち女の子はどれ？",
-        choices: ["ステラ・ルー", "オル・メル", "ジェラトーニ"],
-        correctIndex: 0
     },
     {
         question: "ホーンテッドマンションの館のなかにある時計は、12の部分はどれか？",
@@ -143,39 +117,14 @@ var questions = [
         correctIndex: 0
     },
     {
-        question: "くまのプーさんに出てくる豚のキャラクターの名前は？",
-        choices: ["ピグレット", "ティガー", "イーヨー"],
-        correctIndex: 0
-    },
-    {
         question: "ピグレットの好物は？",
         choices: ["アザミの花", "どんぐり", "プーさんと同じハチミツ"],
         correctIndex: 1
     },
     {
-        question: "ピグレットの好物は？",
-        choices: ["アザミの花", "プーさんと同じはちみつ", "どんぐり"],
-        correctIndex: 2
-    },
-    {
         question: "リスのキャラクターチップとデールの、デールの鼻は何色でしょう？",
         choices: ["黒", "黄色", "赤"],
         correctIndex: 2
-    },
-    {
-        question: "ファインディングニモのお父さんの名前は？",
-        choices: ["マーリン", "マリン", "クラッシュ"],
-        correctIndex: 0
-    },
-    {
-        question: "アラジンに出てくる魔法のランプで叶えられる願いは？",
-        choices: ["死人を生き返らせる", "王子になれる", "自分のことを好きにさせることが出来る"],
-        correctIndex: 1
-    },
-    {
-        question: "トイストーリー3に出てくるロッツォはハグするとどんな匂いがする？",
-        choices: ["せっけん", "いちご", "バラ"],
-        correctIndex: 1
     },
     {
         question: "ホーンテッドマンションに住んでいる幽霊の数は？",
@@ -217,8 +166,12 @@ function initQuiz() {
 }
 
 function nextQuestion() {
-    var randomIndex = Math.floor(Math.random() * questions.length);
-    currentQuestionIndex = (randomIndex !== currentQuestionIndex) ? randomIndex : (randomIndex + 1) % questions.length;
+    var randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === currentQuestionIndex);
+
+    currentQuestionIndex = randomIndex;
     displayQuestion();
 }
 
