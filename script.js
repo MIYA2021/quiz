@@ -94,7 +94,7 @@ var questions = [
     {
         question: "ホーンテッドマンションの待ち時間でないものは？",
         choices: ["9分", "13分", "4分"],
-        correctIndex: 0
+        correctIndex: 0　
     },
     {
         question: "ホーンテッドマンションの黒い乗り物の名前は？",
