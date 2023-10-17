@@ -212,18 +212,13 @@ var questions = [
 let currentQuestionIndex;
 
 function initQuiz() {
-    currentQuestionIndex = -1; // 最初に次の質問に進む前に1回インクリメントされるので-1から始めます
+    currentQuestionIndex = -1;
     nextQuestion();
 }
 
 function nextQuestion() {
-    // ランダムに次の質問のインデックスを選択
     const randomIndex = Math.floor(Math.random() * questions.length);
-
-    // 同じ問題が連続して出ないようにする
     currentQuestionIndex = (randomIndex !== currentQuestionIndex) ? randomIndex : (randomIndex + 1) % questions.length;
-
-    // 質問を表示
     displayQuestion();
 }
 
@@ -239,20 +234,16 @@ function displayQuestion() {
 
 function checkAnswer(choiceIndex) {
     const currentQuestion = questions[currentQuestionIndex];
+
     if (choiceIndex === currentQuestion.correctIndex) {
-        alert("正解！");
+        // 正解の場合
+        alert("正解！\n" + currentQuestion.explanation);
     } else {
-        alert("不正解...");
+        // 不正解の場合
+        const correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
+        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
     // 次の質問に進む
     nextQuestion();
 }
-
-function resetQuiz() {
-    initQuiz();
-}
-
-// クイズ初期化
-initQuiz();
-// JavaScript Document
