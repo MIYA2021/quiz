@@ -2,52 +2,63 @@ var questions = [
     {
         question: "ミッキーマウスとミニーマウスの誕生日は？",
         choices: ["5/25", "9/5", "11/18"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
+
     },
     {
         question: "シンデレラの魔法使いがシンデレラに唱える呪文といえば",
         choices: ["ピクデピクデプー", "ビビデバビデブー", "エクスペクトパトローナム"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "ミッキーの恋人は？",
         choices: ["ミニーマウス", "デイジーダック", "ダッフィー"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "クマのプーさんが好きなのは？？",
         choices: ["砂糖", "ハチミツ", "ハチの巣"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "エルサはどこの国の女王ですか",
         choices: ["アレンディエール", "アレンデール", "アレンドゥール"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "シンデレラが乗っていた馬車はなんの食べ物？",
         choices: ["りんご", "かぼちゃ", "メロン"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "白雪姫が悪いか魔女からもらって食べてしまったのは？",
         choices: ["ドーナッツ", "みかん", "りんご"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "ウッディの靴に書いてある名前は？",
         choices: ["ウッディの名前", "アンディの名前", "アンディの誕生日"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "バズ・ライトイヤーの敵キャラといえばどれ？",
         choices: ["ヘレックス", "ギーグ", "ザーグ"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "モンスターズインクに出てくる女の子の名前は？",
         choices: ["ビー", "ブー", "ベー"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションの館のなかにある時計は、12の部分はどれか？",
@@ -58,12 +69,14 @@ var questions = [
     {
         question: "ホーンテッドマンションがあるテーマランドは？",
         choices: ["ファンタジーランド", "トゥモローランド", "ウエスタンランド"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "1番古いホーンテッドマンションがあるパークは？",
         choices: ["カルフォルニア", "東京", "パリ"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションの待ち時間でないものは？",
@@ -74,87 +87,98 @@ var questions = [
     {
         question: "ホーンテッドマンションの黒い乗り物の名前は？",
         choices: ["ブラックバギー", "ドゥームバギー", "ゴーストバギー"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションには管理人がいるが、連れている動物は何か",
         choices: ["猫", "犬", "鳥"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションの入り口は何口か。",
         choices: ["正門入り口", "庭の入り口", "使用人出入り口"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションのアトラクション乗り場のベルトコンベアにあるイラストは何か。",
         choices: ["コウモリ", "蜘蛛", "スカル"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションには隠れたキャラクターがいるが、ないものはどれか。",
         choices: ["ミッキー", "ミニー", "ドナルド"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "シンデレラ城の屋根の先端は何色？",
         choices: ["白", "金", "青"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "東京ディズニーランドの敷地はオープン以前はどんな場所だった？",
         choices: ["公園", "ゴミ処理場", "海"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "くまのプーさんに出てくる豚のキャラクターの名前は？",
         choices: ["ピグレット", "ティガー", "イーヨー"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "ピグレットの好物は？",
         choices: ["アザミの花", "どんぐり", "プーさんと同じハチミツ"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "リスのキャラクターチップとデールの、デールの鼻は何色でしょう？",
         choices: ["黒", "黄色", "赤"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションに住んでいる幽霊の数は？",
         choices: ["10", "555", "999"],
-        correctIndex: 2
+        correctIndex: 2,
+        explanation: " "
     },
     {
         question: "ディズニーランドのクリッターカントリーにあるレストランの名前は？",
         choices: ["グラン・マサラ", "グランマ・サラ", "グランマサ・ラ"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "次のホテルのうち、ディズニーホテルはどれ？",
         choices: ["セレブレーションホテル", "シェラトン・グランデトーキョーベイホテル", "オリエンタルホテル東京ベイ"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "ピノキオを作ったおじいさんの名前は",
         choices: ["ピボット", "ゼペット", "サラット"],
-        correctIndex: 1
+        correctIndex: 1,
+        explanation: " "
     },
     {
         question: "では、その黒いライドは、ホリデーナイトメアの期間中は何と呼ばれるか",
         choices: ["黒のソリ", "闇のソリ", "やばいソリ"],
-        correctIndex: 0
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "ホーンテッドマンションでゲストを案内するゴーストの名は？",
         choices: ["グリニングゴースト", "マダムレオタ", "ゴーストホスト"],
-        correctIndex: 0
-    },
-    {
-        question: "プーさんのハニーハントで待ち時間にないものは何？",
-        choices: ["8分", "14分", "88分"],
-        correctIndex: 2
+        correctIndex: 0,
+        explanation: " "
     },
     {
         question: "プーさんのハニーハントで待ち時間にないものは何？",
