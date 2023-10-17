@@ -10,7 +10,7 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff; /* クイズコンテナの背景色 (ホワイト) */
+    background-color: #818181; /* クイズコンテナの背景色 (ホワイト) */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
 }
@@ -23,8 +23,8 @@ body {
 }
 
 .choice {
-    background-color: #ff69b4; /* 選択肢の背景色 (ピンク) */
-    color: #fff; /* 選択肢の文字色 */
+    background-color: #845ecc; /* 選択肢の背景色 (ピンク) */
+    color: #2a2828; /* 選択肢の文字色 */
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
