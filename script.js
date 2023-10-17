@@ -160,6 +160,12 @@ var questions = [
         choices: ["8分", "14分", "88分"],
         correctIndex: 2
     },
+    {
+        question: "プーさんのハニーハントで待ち時間にないものは何？",
+        choices: ["8分", "14分", "88分"],
+        correctIndex: 2,
+        explanation: "8は『ハチ』、14は『イーヨー』なので88は無い"
+    },
 ];
 
 var currentQuestionIndex;
