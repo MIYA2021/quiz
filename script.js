@@ -2,7 +2,7 @@ var questions = [
     {
         question: "ソアリン：ファンタスティック・フライトで最後に到着する場所といえばどこ？",
         choices: ["東京ディズニーランド", "東京ディズニーシー", "東京スカイツリー"],
-        correctIndex: 1
+        correctIndex: 1,
         explanation: "正解！ソアリン：ファンタスティック・フライトでは、素晴らしい景色とともに東京ディズニーシーに到着します。"
     },
     {
@@ -94,7 +94,7 @@ var questions = [
     {
         question: "ホーンテッドマンションの待ち時間でないものは？",
         choices: ["9分", "13分", "4分"],
-        correctIndex: 0
+        correctIndex: 0,
         explanation: "『９』だと苦しいという語呂合わせになってしまうから"
     },
     {
