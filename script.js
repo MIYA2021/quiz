@@ -209,7 +209,7 @@ var questions = [
     },
 ];
 
-let currentQuestionIndex;
+var currentQuestionIndex;
 
 function initQuiz() {
     currentQuestionIndex = -1;
@@ -217,33 +217,36 @@ function initQuiz() {
 }
 
 function nextQuestion() {
-    const randomIndex = Math.floor(Math.random() * questions.length);
+    var randomIndex = Math.floor(Math.random() * questions.length);
     currentQuestionIndex = (randomIndex !== currentQuestionIndex) ? randomIndex : (randomIndex + 1) % questions.length;
     displayQuestion();
 }
 
 function displayQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
-    const choices = document.getElementsByClassName('choice');
-    for (let i = 0; i < choices.length; i++) {
+    var choices = document.getElementsByClassName('choice');
+    for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = currentQuestion.choices[i];
     }
 }
 
 function checkAnswer(choiceIndex) {
-    const currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = questions[currentQuestionIndex];
 
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
         alert("正解！\n" + currentQuestion.explanation);
     } else {
         // 不正解の場合
-        const correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
+        var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
         alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
     // 次の質問に進む
     nextQuestion();
 }
+
+// クイズ初期化
+initQuiz();
