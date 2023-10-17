@@ -1,54 +1,41 @@
 /* disney-style.css */
 
 body {
+    background-color: #000;
+    color: #fff;
     font-family: 'Arial', sans-serif;
-    background-color: #ffe4b5; /* ページの背景色 (ミスティックアルモンド) */
-    color: #333; /* ページの文字色 */
 }
 
 #quiz-container {
     max-width: 600px;
     margin: 50px auto;
+    background-color: #fff;
     padding: 20px;
-    background-color: #818181; /* クイズコンテナの背景色 (ホワイト) */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 #question {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #ff4500; /* 質問の文字色 (オレンジレッド) */
+    color: #ff6f00; /* オレンジ色 */
 }
 
 .choice {
-    background-color: #845ecc; /* 選択肢の背景色 (ピンク) */
-    color: #2a2828; /* 選択肢の文字色 */
+    background-color: #ff6f00; /* オレンジ色 */
+    color: #fff;
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .choice:hover {
-    background-color: #ff1493; /* ホバー時の背景色 (ディープピンク) */
+    background-color: #ff8f00; /* より明るいオレンジ色 */
 }
 
-/* ハロウィン風のスタイルを追加 */
-#quiz-container::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    background-image: url('path/to/halloween-bg.jpg'); /* ハロウィン風の背景画像 */
-    background-size: cover;
-    z-index: -1;
-    opacity: 0.2;
+.choice:active {
+    background-color: #ff4f00; /* より濃いオレンジ色 */
 }
-
-/* その他の要素やスタイルを追加する場合はここに記述 */
