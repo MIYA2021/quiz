@@ -1,28 +1,67 @@
+/* disney-style.css */
+
 body {
-    background-image: url('disney-background.jpg'); /* ディズニー風の背景画像 */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* ページの背景色 */
+    color: #333; /* ページの文字色 */
 }
 
 #quiz-container {
-    background-color: rgba(255, 255, 255, 0.9); /* 白色の透明度を調整 */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff; /* クイズコンテナの背景色 */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
 }
 
 #question {
-    font-family: 'Disney', cursive; /* ディズニー風のフォント */
-    color: #ff6f61; /* ディズニー風の赤色 */
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #009688; /* 質問の文字色 */
 }
 
 .choice {
-    font-family: 'Disney', cursive; /* ディズニー風のフォント */
-    border: 2px solid #ff6f61; /* ディズニー風の赤色 */
-    color: #ff6f61; /* ディズニー風の赤色 */
-    background-color: rgba(255, 255, 255, 0.8); /* 白色の透明度を調整 */
+    background-color: #009688; /* 選択肢の背景色 */
+    color: #fff; /* 選択肢の文字色 */
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .choice:hover {
-    background-color: #ff6f61; /* ディズニー風の赤色 */
-    color: #fff;
+    background-color: #00796b; /* ホバー時の背景色 */
 }
+
+/* ホーンテッドマンション風のスタイルを追加 */
+#quiz-container::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background-image: url('path/to/haunted-mansion-bg.jpg'); /* ホーンテッドマンション風の背景画像 */
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+#quiz-container::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #663399, #8a2be2); /* ディズニー風のグラデーション */
+    z-index: -1;
+    opacity: 0.2;
+}
+
+/* その他の要素やスタイルを追加する場合はここに記述 */
