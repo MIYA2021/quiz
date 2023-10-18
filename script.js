@@ -259,14 +259,23 @@ function nextQuestion() {
 
 function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
-    document.getElementById('question').textContent = currentQuestion.question;
 
     // 選択肢をシャッフル
     var shuffledChoices = shuffle(currentQuestion.choices);
 
+    // 正解の選択肢がどこに移動したかを取得
+    var correctIndex = shuffledChoices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
+
+    document.getElementById('question').textContent = currentQuestion.question;
+
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+
+        // 正解の選択肢の場合は正しいインデックスを設定
+        if (i === correctIndex) {
+            currentQuestion.correctIndex = i;
+        }
     }
 }
 
