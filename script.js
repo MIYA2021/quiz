@@ -111,7 +111,7 @@ var questions = [
     {
         question: "ホーンテッドマンションには隠れたキャラクターがいるが、ないものはどれか。",
         choices: ["ミッキー", "ミニー", "ドナルド"],
-        correctIndex: 2,
+        correctIndex: 1,
         explanation: " "
     },
     {
