@@ -218,7 +218,7 @@ var questions = [
     },
 ];
 
-¥var currentQuestionIndex;
+var currentQuestionIndex;
 var quizCount;
 
 function initQuiz() {
