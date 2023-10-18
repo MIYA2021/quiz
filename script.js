@@ -232,7 +232,7 @@ function initQuiz() {
 function nextQuestion() {
     // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
-        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount); // NEW: 正解した回数を表示
+        var resetConfirmation = confirm("ありがとうございます！！クイズを終わります！！\n正解した回数: " + correctCount); // NEW: 正解した回数を表示
         if (resetConfirmation) {
             // リセットの場合
             initQuiz();
