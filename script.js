@@ -261,13 +261,12 @@ function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
-    // 正解を含む選択肢をシャッフル
-    var choices = [...currentQuestion.choices];
-    choices.sort(() => Math.random() - 0.5);
+    // 選択肢をシャッフル
+    var shuffledChoices = shuffle(currentQuestion.choices);
 
-    var choiceElements = document.getElementsByClassName('choice');
-    for (var i = 0; i < choiceElements.length; i++) {
-        choiceElements[i].textContent = choices[i];
+    var choices = document.getElementsByClassName('choice');
+    for (var i = 0; i < choices.length; i++) {
+        choices[i].textContent = shuffledChoices[i];
     }
 }
 
