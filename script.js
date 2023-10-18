@@ -241,18 +241,51 @@ function nextQuestion() {
         return;
     }
 
+var currentQuestionIndex;
+var quizCount;
+
+function initQuiz() {
+    currentQuestionIndex = -1;
+    quizCount = 0;
+    nextQuestion();
+}
+
+function nextQuestion() {
+    // クイズ回数が5に達したら終了
+    if (quizCount >= 5) {
+        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？");
+        if (resetConfirmation) {
+            // リセットの場合
+            initQuiz();
+        } else {
+            // リセットしない場合
+            alert("お疲れ様でした！");
+        }
+        return;
+    }
+
     var randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * questions.length);
     } while (randomIndex === currentQuestionIndex);
 
     currentQuestionIndex = randomIndex;
+    shuffleChoices(); // 選択肢をランダムに並び替え
     displayQuestion();
 
     // クイズ回数を増加
     quizCount++;
     // HTML にクイズ回数を反映
     document.getElementById('count').textContent = quizCount;
+}
+
+function shuffleChoices() {
+    var currentQuestion = questions[currentQuestionIndex];
+    for (var i = currentQuestion.choices.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        // 選択肢をランダムに入れ替える
+        [currentQuestion.choices[i], currentQuestion.choices[j]] = [currentQuestion.choices[j], currentQuestion.choices[i]];
+    }
 }
 
 function displayQuestion() {
