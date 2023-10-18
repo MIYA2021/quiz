@@ -4,12 +4,14 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* ビューポートの高さいっぱいに設定 */
 }
 
 #quiz-container {
     max-width: 600px;
-    margin: 50px auto;
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
