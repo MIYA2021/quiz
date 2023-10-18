@@ -240,6 +240,7 @@ function nextQuestion() {
         }
         return;
     }
+}
 
 var currentQuestionIndex;
 var quizCount;
