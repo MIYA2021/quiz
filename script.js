@@ -259,12 +259,19 @@ function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
+    // 正解のインデックスをランダムに選ぶ
+    var correctIndex = Math.floor(Math.random() * currentQuestion.choices.length);
+
     // 選択肢をシャッフル
     var shuffledChoices = shuffle(currentQuestion.choices);
 
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        if (shuffledChoices[i] === currentQuestion.choices[correctIndex]) {
+            // 正解の選択肢の場合、正解のインデックスを保存
+            currentQuestion.correctIndex = i;
+        }
     }
 }
 
