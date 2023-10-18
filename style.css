@@ -51,30 +51,29 @@ body {
     color: #ff6f61;
 }
 
-@keyframes celebrateAnimation {
-    0% {
-        opacity: 0;
+/* style.css1 */
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
     }
-
-    50% {
-        opacity: 1;
-        transform: translateY(-50px);
+    40% {
+        transform: translateY(-20px);
     }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-100px);
+    60% {
+        transform: translateY(-10px);
     }
 }
 
-.celebration {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.celebration-message {
     font-size: 24px;
-    color: #ff6f61; /* ディズニー風の赤色 */
-    font-family: 'Disney', cursive; /* ディズニー風のフォント */
-    animation: celebrateAnimation 3s ease-out;
+    color: #ff6f61;
+    text-align: center;
+    animation: bounce 2s ease infinite;
+}
+
+.result-message {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
 }
