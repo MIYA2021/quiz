@@ -233,6 +233,8 @@ function nextQuestion() {
     if (quizCount >= 5) {
         if (correctCount === 5) {
             celebrate();
+        } else if (correctCount === 4) {
+            displayAlmostThere();
         } else {
             console.log("クイズが終了しました。");
             console.log("正解した回数: " + correctCount);
@@ -289,6 +291,18 @@ function celebrate() {
     });
 }
 
+function displayAlmostThere() {
+    var almostThereMessage = document.createElement('div');
+    almostThereMessage.textContent = '全問正解まであと1問!! 惜しかったね!!';
+    almostThereMessage.className = 'almost-there';
+
+    document.body.appendChild(almostThereMessage);
+
+    // 5秒後にメッセージを削除
+    setTimeout(function () {
+        document.body.removeChild(almostThereMessage);
+    }, 5000);
+}
+
 // クイズ初期化
 initQuiz();
-
