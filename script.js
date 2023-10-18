@@ -230,14 +230,15 @@ function initQuiz() {
 }
 
 function nextQuestion() {
+    // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
-        if (correctCount === 5) {
-            celebrate();
-        } else if (correctCount === 4) {
-            displayAlmostThere();
+        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
+        if (resetConfirmation) {
+            // リセットの場合
+            initQuiz();
         } else {
-            console.log("クイズが終了しました。");
-            console.log("正解した回数: " + correctCount);
+            // リセットしない場合
+            alert("お疲れ様でした！\n正解した回数: " + correctCount);
         }
         return;
     }
@@ -250,7 +251,9 @@ function nextQuestion() {
     currentQuestionIndex = randomIndex;
     displayQuestion();
 
+    // クイズ回数を増加
     quizCount++;
+    // HTML にクイズ回数を反映
     document.getElementById('count').textContent = quizCount;
 }
 
@@ -258,9 +261,12 @@ function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
+    // 選択肢をシャッフル
+    var shuffledChoices = shuffle(currentQuestion.choices);
+
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
-        choices[i].textContent = currentQuestion.choices[i];
+        choices[i].textContent = shuffledChoices[i];
     }
 }
 
@@ -268,41 +274,34 @@ function checkAnswer(choiceIndex) {
     var currentQuestion = questions[currentQuestionIndex];
 
     if (choiceIndex === currentQuestion.correctIndex) {
-        console.log("正解！\n" + currentQuestion.explanation);
+        // 正解の場合
+        alert("正解！\n" + currentQuestion.explanation);
         correctCount++;
     } else {
+        // 不正解の場合
         var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
-        console.log("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
+        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
+    // 次の質問に進む
     nextQuestion();
-}
-
-function celebrate() {
-    var celebrationMessage = document.createElement('div');
-    celebrationMessage.textContent = 'おめでとうございます！！スタンプゲット！！';
-    celebrationMessage.className = 'celebration';
-
-    document.body.appendChild(celebrationMessage);
-
-    // アニメーション終了後にメッセージを削除
-    celebrationMessage.addEventListener('animationend', function () {
-        document.body.removeChild(celebrationMessage);
-    });
-}
-
-function displayAlmostThere() {
-    var almostThereMessage = document.createElement('div');
-    almostThereMessage.textContent = '全問正解まであと1問!! 惜しかったね!!';
-    almostThereMessage.className = 'almost-there';
-
-    document.body.appendChild(almostThereMessage);
-
-    // 5秒後にメッセージを削除
-    setTimeout(function () {
-        document.body.removeChild(almostThereMessage);
-    }, 5000);
 }
 
 // クイズ初期化
 initQuiz();
+
+// Fisher-Yates シャッフルアルゴリズム
+function shuffle(array) {
+    var currentIndex = array.length, randomIndex, tempValue;
+  
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+  
+        tempValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = tempValue;
+    }
+  
+    return array;
+}
