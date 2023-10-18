@@ -218,25 +218,25 @@ var questions = [
     },
 ];
 
-var currentQuestionIndex;
+¥var currentQuestionIndex;
 var quizCount;
-var correctCount;
 
 function initQuiz() {
     currentQuestionIndex = -1;
     quizCount = 0;
-    correctCount = 0;
     nextQuestion();
 }
 
 function nextQuestion() {
     // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
-        if (correctCount === 5) {
-            // 全問正解の場合
-            celebrate();
+        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？");
+        if (resetConfirmation) {
+            // リセットの場合
+            initQuiz();
         } else {
-            showResult();
+            // リセットしない場合
+            alert("お疲れ様でした！");
         }
         return;
     }
@@ -259,16 +259,9 @@ function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
-    // 選択肢をシャッフル
-    var shuffledChoices = shuffle(currentQuestion.choices);
-
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
-        choices[i].textContent = shuffledChoices[i];
-        if (shuffledChoices[i] === currentQuestion.choices[currentQuestion.correctIndex]) {
-            // 正解の選択肢の場合、正解のインデックスを保存
-            currentQuestion.correctIndex = i;
-        }
+        choices[i].textContent = currentQuestion.choices[i];
     }
 }
 
@@ -278,7 +271,6 @@ function checkAnswer(choiceIndex) {
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
         alert("正解！\n" + currentQuestion.explanation);
-        correctCount++;
     } else {
         // 不正解の場合
         var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
@@ -291,38 +283,3 @@ function checkAnswer(choiceIndex) {
 
 // クイズ初期化
 initQuiz();
-
-// Fisher-Yates シャッフルアルゴリズム
-function shuffle(array) {
-    var currentIndex = array.length, randomIndex, tempValue;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        tempValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = tempValue;
-    }
-
-    return array;
-}
-
-function celebrate() {
-    var celebrationMessage = document.createElement('div');
-    celebrationMessage.textContent = 'おめでとうございます!!全問正解です!!ボーナススタンプゲット!!';
-    celebrationMessage.classList.add('celebration-message');
-    document.body.appendChild(celebrationMessage);
-
-    // アニメーションを適用
-    celebrationMessage.addEventListener('animationend', function () {
-        document.body.removeChild(celebrationMessage);
-    });
-}
-
-function showResult() {
-    var resultMessage = document.createElement('div');
-    resultMessage.textContent = 'クイズが終了しました。リセットしますか？\n正解した回数: ' + correctCount;
-    resultMessage.classList.add('result-message');
-    document.body.appendChild(resultMessage);
-}
