@@ -41,3 +41,24 @@ body {
 .choice:active {
     background-color: #ff4f00; /* より濃いオレンジ色 */
 }
+
+.almost-there {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #ff6f61; /* ディズニー風の赤色 */
+    font-family: 'Disney', cursive; /* ディズニー風のフォント */
+    animation: almostThereAnimation 5s ease-out;
+}
+
+@keyframes almostThereAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
