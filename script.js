@@ -260,11 +260,11 @@ function nextQuestion() {
 function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
 
+    // 正解の選択肢を保存
+    var correctChoice = currentQuestion.choices[currentQuestion.correctIndex];
+
     // 選択肢をシャッフル
     var shuffledChoices = shuffle(currentQuestion.choices);
-
-    // 正解の選択肢がどこに移動したかを取得
-    var correctIndex = shuffledChoices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
 
     document.getElementById('question').textContent = currentQuestion.question;
 
@@ -273,7 +273,7 @@ function displayQuestion() {
         choices[i].textContent = shuffledChoices[i];
 
         // 正解の選択肢の場合は正しいインデックスを設定
-        if (i === correctIndex) {
+        if (shuffledChoices[i] === correctChoice) {
             currentQuestion.correctIndex = i;
         }
     }
