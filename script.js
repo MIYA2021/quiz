@@ -231,8 +231,12 @@ function initQuiz() {
 
 function nextQuestion() {
     if (quizCount >= 5) {
-        console.log("クイズが終了しました。");
-        console.log("正解した回数: " + correctCount);
+        if (correctCount === 5) {
+            celebrate();
+        } else {
+            console.log("クイズが終了しました。");
+            console.log("正解した回数: " + correctCount);
+        }
         return;
     }
 
@@ -272,5 +276,19 @@ function checkAnswer(choiceIndex) {
     nextQuestion();
 }
 
+function celebrate() {
+    var celebrationMessage = document.createElement('div');
+    celebrationMessage.textContent = 'おめでとうございます！！スタンプゲット！！';
+    celebrationMessage.className = 'celebration';
+
+    document.body.appendChild(celebrationMessage);
+
+    // アニメーション終了後にメッセージを削除
+    celebrationMessage.addEventListener('animationend', function () {
+        document.body.removeChild(celebrationMessage);
+    });
+}
+
 // クイズ初期化
 initQuiz();
+
