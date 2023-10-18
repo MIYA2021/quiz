@@ -232,19 +232,13 @@ function initQuiz() {
 function nextQuestion() {
     // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
-        if (correctCount === 5) {
-            // 5問全問正解の場合
-            playCongratulations();
+        var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
+        if (resetConfirmation) {
+            // リセットの場合
+            initQuiz();
         } else {
-            // それ以外の場合
-            var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
-            if (resetConfirmation) {
-                // リセットの場合
-                initQuiz();
-            } else {
-                // リセットしない場合
-                alert("お疲れ様でした！\n正解した回数: " + correctCount);
-            }
+            // リセットしない場合
+            alert("お疲れ様でした！\n正解した回数: " + correctCount);
         }
         return;
     }
@@ -299,26 +293,23 @@ initQuiz();
 // Fisher-Yates シャッフルアルゴリズム
 function shuffle(array) {
     var currentIndex = array.length, randomIndex, tempValue;
-  
+
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-  
+
         tempValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = tempValue;
     }
-  
+
     return array;
 }
 
-// おめでとう画面表示
-function playCongratulations() {
-    var congratsElement = document.createElement('div');
-    congratsElement.innerHTML = '<h1 style="color: #ff0000;">おめでとうございます!! 全問正解!!</h1>';
-    document.body.appendChild(congratsElement);
-
-    // 効果音再生
-    var audio = new Audio('path/to/congrats-sound.mp3');
-    audio.play();
+// 合計で正解した回数を表示
+function displayTotalCorrectCount() {
+    alert("合計で正解した回数: " + correctCount);
 }
+
+// ページが読み込まれたときに合計正解数を表示
+window.onload = displayTotalCorrectCount;
