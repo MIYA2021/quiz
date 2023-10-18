@@ -220,26 +220,19 @@ var questions = [
 
 var currentQuestionIndex;
 var quizCount;
-var correctCount; // NEW: 正解した回数
+var correctCount;
 
 function initQuiz() {
     currentQuestionIndex = -1;
     quizCount = 0;
-    correctCount = 0; // NEW: 正解した回数の初期化
+    correctCount = 0;
     nextQuestion();
 }
 
 function nextQuestion() {
-    // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
-        var resetConfirmation = confirm("ありがとうございます！！クイズを終わります！！\n正解した回数: " + correctCount); // NEW: 正解した回数を表示
-        if (resetConfirmation) {
-            // リセットの場合
-            initQuiz();
-        } else {
-            // リセットしない場合
-            alert("お疲れ様でした！\n正解した回数: " + correctCount); // NEW: 正解した回数を表示
-        }
+        console.log("クイズが終了しました。");
+        console.log("正解した回数: " + correctCount);
         return;
     }
 
@@ -251,9 +244,7 @@ function nextQuestion() {
     currentQuestionIndex = randomIndex;
     displayQuestion();
 
-    // クイズ回数を増加
     quizCount++;
-    // HTML にクイズ回数を反映
     document.getElementById('count').textContent = quizCount;
 }
 
@@ -271,16 +262,13 @@ function checkAnswer(choiceIndex) {
     var currentQuestion = questions[currentQuestionIndex];
 
     if (choiceIndex === currentQuestion.correctIndex) {
-        // 正解の場合
-        alert("正解！\n" + currentQuestion.explanation);
-        correctCount++; // NEW: 正解した回数を増加
+        console.log("正解！\n" + currentQuestion.explanation);
+        correctCount++;
     } else {
-        // 不正解の場合
         var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
-        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
+        console.log("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
-    // 次の質問に進む
     nextQuestion();
 }
 
