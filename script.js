@@ -268,6 +268,9 @@ function displayQuestion() {
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
     }
+
+    // 正解の位置を更新
+    currentQuestion.correctIndex = shuffledChoices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
 }
 
 function checkAnswer(choiceIndex) {
