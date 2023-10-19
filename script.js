@@ -230,8 +230,8 @@ function initQuiz() {
 }
 
 function nextQuestion() {
-    // クイズ回数が3に達したら終了
-    if (quizCount >= 3) {
+    // クイズ回数が5に達したら終了
+    if (quizCount >= 5) {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
@@ -262,7 +262,7 @@ function displayQuestion() {
     document.getElementById('question').textContent = currentQuestion.question;
 
     // 選択肢をシャッフル
-    var shuffledChoices = shuffle(currentQuestion.choices);
+    var shuffledChoices = shuffle([...currentQuestion.choices]);
 
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
