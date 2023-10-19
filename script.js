@@ -267,10 +267,15 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].onclick = function (index) {
+            return function () {
+                checkAnswer(index);
+            };
+        }(i);
     }
 
-    // 正解の選択肢を保存
-    correctChoice = currentQuestion.choices[currentQuestion.correctIndex];
+    // 正解の位置を更新
+    currentQuestion.correctIndex = shuffledChoices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
 }
 
 function checkAnswer(choiceIndex) {
@@ -282,7 +287,8 @@ function checkAnswer(choiceIndex) {
         correctCount++;
     } else {
         // 不正解の場合
-        alert("不正解...\n正解は: " + correctChoice + "\n" + currentQuestion.explanation);
+        var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
+        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
     }
 
     // 次の質問に進む
@@ -295,26 +301,15 @@ initQuiz();
 // Fisher-Yates シャッフルアルゴリズム
 function shuffle(array) {
     var currentIndex = array.length, randomIndex, tempValue;
-
+  
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-
+  
         tempValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = tempValue;
     }
-
+  
     return array;
 }
-この修正により、正解はランダムに変わらないようになっています。どうぞご確認ください。
-
-
-
-
-
-Regenerate
-Send a message
-
-
-Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT September 25 Version
