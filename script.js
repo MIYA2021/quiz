@@ -269,22 +269,21 @@ function displayQuestion() {
         choices[i].textContent = shuffledChoices[i];
     }
 
-    // 正解のインデックスを保存
-    var correctIndex = currentQuestion.choices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
-    document.getElementById('quiz-container').dataset.correctIndex = correctIndex;
+    // 正解の選択肢を保存
+    var correctChoice = currentQuestion.choices[currentQuestion.correctIndex];
+    document.getElementById('quiz-container').dataset.correctChoice = correctChoice;
 }
 
 function checkAnswer(choiceIndex) {
-    var correctIndex = parseInt(document.getElementById('quiz-container').dataset.correctIndex);
+    var correctChoice = document.getElementById('quiz-container').dataset.correctChoice;
 
-    if (choiceIndex === correctIndex) {
+    if (choices[choiceIndex] === correctChoice) {
         // 正解の場合
         alert("正解！\n" + questions[currentQuestionIndex].explanation);
         correctCount++;
     } else {
         // 不正解の場合
-        var correctAnswer = questions[currentQuestionIndex].choices[correctIndex];
-        alert("不正解...\n正解は: " + correctAnswer + "\n" + questions[currentQuestionIndex].explanation);
+        alert("不正解...\n正解は: " + correctChoice + "\n" + questions[currentQuestionIndex].explanation);
     }
 
     // 次の質問に進む
