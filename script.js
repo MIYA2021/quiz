@@ -259,14 +259,23 @@ function nextQuestion() {
 
 function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
-    document.getElementById('question').textContent = currentQuestion.question;
 
     // 選択肢をシャッフル
     var shuffledChoices = shuffle(currentQuestion.choices);
 
+    // 正解の選択肢がどこに移動したかを取得
+    var correctIndex = shuffledChoices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
+
+    document.getElementById('question').textContent = currentQuestion.question;
+
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+
+        // 正解の選択肢の場合は正しいインデックスを設定
+        if (i === correctIndex) {
+            currentQuestion.correctIndex = i;
+        }
     }
 }
 
@@ -293,23 +302,15 @@ initQuiz();
 // Fisher-Yates シャッフルアルゴリズム
 function shuffle(array) {
     var currentIndex = array.length, randomIndex, tempValue;
-
+  
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-
+  
         tempValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = tempValue;
     }
-
+  
     return array;
 }
-
-// 合計で正解した回数を表示
-function displayTotalCorrectCount() {
-    alert("合計で正解した回数: " + correctCount);
-}
-
-// ページが読み込まれたときに合計正解数を表示
-window.onload = displayTotalCorrectCount;
