@@ -267,6 +267,9 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].onclick = function() {
+            checkAnswer(i);
+        };
     }
 
     // 正解の選択肢を保存
@@ -277,7 +280,7 @@ function displayQuestion() {
 function checkAnswer(choiceIndex) {
     var correctChoice = document.getElementById('quiz-container').dataset.correctChoice;
 
-    if (choices[choiceIndex] === correctChoice) {
+    if (choices[choiceIndex].textContent === correctChoice) {
         // 正解の場合
         alert("正解！\n" + questions[currentQuestionIndex].explanation);
         correctCount++;
