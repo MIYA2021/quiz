@@ -267,6 +267,11 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].onclick = function (index) {
+            return function () {
+                checkAnswer(index);
+            };
+        }(i);
     }
 
     // 正解の位置を更新
