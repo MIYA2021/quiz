@@ -262,7 +262,7 @@ function displayQuestion() {
     document.getElementById('question').textContent = currentQuestion.question;
 
     // 選択肢をシャッフル
-    var shuffledChoices = shuffle(currentQuestion.choices);
+    var shuffledChoices = shuffle([...currentQuestion.choices]);
 
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
