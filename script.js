@@ -268,19 +268,23 @@ function displayQuestion() {
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
     }
+
+    // 正解のインデックスを保存
+    var correctIndex = currentQuestion.choices.indexOf(currentQuestion.choices[currentQuestion.correctIndex]);
+    document.getElementById('quiz-container').dataset.correctIndex = correctIndex;
 }
 
 function checkAnswer(choiceIndex) {
-    var currentQuestion = questions[currentQuestionIndex];
+    var correctIndex = parseInt(document.getElementById('quiz-container').dataset.correctIndex);
 
-    if (choiceIndex === currentQuestion.correctIndex) {
+    if (choiceIndex === correctIndex) {
         // 正解の場合
-        alert("正解！\n" + currentQuestion.explanation);
+        alert("正解！\n" + questions[currentQuestionIndex].explanation);
         correctCount++;
     } else {
         // 不正解の場合
-        var correctAnswer = currentQuestion.choices[currentQuestion.correctIndex];
-        alert("不正解...\n正解は: " + correctAnswer + "\n" + currentQuestion.explanation);
+        var correctAnswer = questions[currentQuestionIndex].choices[correctIndex];
+        alert("不正解...\n正解は: " + correctAnswer + "\n" + questions[currentQuestionIndex].explanation);
     }
 
     // 次の質問に進む
