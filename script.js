@@ -75,7 +75,7 @@ var questions = [
     {
         question: "1番古いホーンテッドマンションがあるパークは？",
         choices: ["カルフォルニア", "東京", "パリ"],
-        correctIndex: 2,
+        correctIndex: 0,
         explanation: " "
     },
     {
