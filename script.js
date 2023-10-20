@@ -235,12 +235,13 @@ function nextQuestion() {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
-            initQuiz();
+            resetQuiz();
+            return;
         } else {
             // リセットしない場合
             alert("お疲れ様でした！\n正解した回数: " + correctCount);
+            return;
         }
-        return;
     }
 
     var randomIndex;
@@ -261,16 +262,13 @@ function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     document.getElementById('question').textContent = currentQuestion.question;
 
-    // 正解の選択肢を含む選択肢のリストを作成
-    var choicesWithAnswer = currentQuestion.choices.slice();
-    choicesWithAnswer[currentQuestion.correctIndex] = currentQuestion.choices[currentQuestion.correctIndex];
-
     // 選択肢をシャッフル
-    var shuffledChoices = shuffle(choicesWithAnswer);
+    var shuffledChoices = shuffle(currentQuestion.choices);
 
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].setAttribute("data-index", i); // 正しい順序でのインデックスを設定
     }
 }
 
@@ -290,6 +288,15 @@ function checkAnswer(choiceElement) {
 
     // 次の質問に進む
     nextQuestion();
+}
+
+function resetQuiz() {
+    // クイズをリセット
+    initQuiz();
+    // スタートボタンを表示
+    document.getElementById('start-button').style.display = 'block';
+    // クイズコンテナを非表示
+    document.getElementById('quiz-container').style.display = 'none';
 }
 
 // クイズ初期化
