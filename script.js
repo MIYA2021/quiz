@@ -314,4 +314,4 @@ function displayTotalCorrectCount() {
 }
 
 // ページが読み込まれたときに合計正解数を表示
-window.o
+window.onload = displayTotalCorrectCount;
