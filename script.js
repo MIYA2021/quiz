@@ -261,12 +261,13 @@ function nextQuestion() {
         return;
     }
 
-    var randomIndex;
-    do {
-        randomIndex = Math.floor(Math.random() * questions.length);
-    } while (randomIndex === currentQuestionIndex);
+    var remainingQuestions = questions.filter(function(question, index) {
+        return index !== currentQuestionIndex;
+    });
 
-    currentQuestionIndex = randomIndex;
+    var randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+    currentQuestionIndex = remainingQuestions[randomIndex];
+
     displayQuestion();
 
     // クイズ回数を増加
