@@ -230,18 +230,20 @@ function initQuiz() {
 }
 
 function showStartScreen() {
-    // クイズ初期化
-    initQuiz();
-
     // スタート画面を表示
     document.getElementById('start-container').style.display = 'block';
     document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('stamp-message').style.display = 'none';
 }
 
 function startQuiz() {
+    // クイズ初期化
+    initQuiz();
+
     // スタートボタンを押したらクイズ画面を表示
     document.getElementById('start-container').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('stamp-message').style.display = 'none';
 
     // 最初の質問を表示
     nextQuestion();
