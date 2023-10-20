@@ -257,11 +257,6 @@ function nextQuestion() {
 
     currentQuestionIndex = randomIndex;
     displayQuestion();
-
-    // クイズ回数を増加
-    quizCount++;
-    // HTML にクイズ回数を反映
-    document.getElementById('count').textContent = quizCount;
 }
 
 function displayQuestion() {
