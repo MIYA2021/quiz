@@ -275,7 +275,7 @@ function displayQuestion() {
 }
 
 function checkAnswer(choiceElement) {
-    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"));
+    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"), 10);
     var currentQuestion = questions[currentQuestionIndex];
 
     // 選択後に再度選択できないように設定
