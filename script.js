@@ -229,20 +229,13 @@ function initQuiz() {
     nextQuestion();
 }
 
-function startQuiz() {
-    document.getElementById('start-container').style.display = 'none';
-    document.getElementById('quiz-container').style.display = 'block';
-    initQuiz();
-}
-
 function nextQuestion() {
     // クイズ回数が5に達したら終了
     if (quizCount >= 5) {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
-            document.getElementById('start-container').style.display = 'block';
-            document.getElementById('quiz-container').style.display = 'none';
+            initQuiz();
         } else {
             // リセットしない場合
             alert("お疲れ様でした！\n正解した回数: " + correctCount);
@@ -257,6 +250,11 @@ function nextQuestion() {
 
     currentQuestionIndex = randomIndex;
     displayQuestion();
+
+    // クイズ回数を増加
+    quizCount++;
+    // HTML にクイズ回数を反映
+    document.getElementById('count').textContent = quizCount;
 }
 
 function displayQuestion() {
@@ -269,20 +267,12 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
-        choices[i].style.pointerEvents = 'auto';  // 選択可能に設定
-        choices[i].setAttribute("data-index", i); // 選択肢にデータ属性でインデックスを設定
     }
 }
 
 function checkAnswer(choiceElement) {
-    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"), 10);
+    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"));
     var currentQuestion = questions[currentQuestionIndex];
-
-    // 選択後に再度選択できないように設定
-    var choices = document.getElementsByClassName('choice');
-    for (var i = 0; i < choices.length; i++) {
-        choices[i].style.pointerEvents = 'none';  // 選択不可に設定
-    }
 
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
@@ -316,3 +306,11 @@ function shuffle(array) {
 
     return array;
 }
+
+// 合計で正解した回数を表示
+function displayTotalCorrectCount() {
+    alert("合計で正解した回数: " + correctCount);
+}
+
+// ページが読み込まれたときに合計正解数を表示
+window.onload = displayTotalCorrectCount;
