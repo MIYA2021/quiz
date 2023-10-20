@@ -226,6 +226,24 @@ function initQuiz() {
     currentQuestionIndex = -1;
     quizCount = 0;
     correctCount = 0;
+    showStartScreen();
+}
+
+function showStartScreen() {
+    // クイズ初期化
+    initQuiz();
+
+    // スタート画面を表示
+    document.getElementById('start-container').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'none';
+}
+
+function startQuiz() {
+    // スタートボタンを押したらクイズ画面を表示
+    document.getElementById('start-container').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+
+    // 最初の質問を表示
     nextQuestion();
 }
 
@@ -235,7 +253,7 @@ function nextQuestion() {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
-            initQuiz();
+            showStartScreen();
         } else {
             // リセットしない場合
             alert("お疲れ様でした！\n正解した回数: " + correctCount);
@@ -243,12 +261,13 @@ function nextQuestion() {
         return;
     }
 
-    var randomIndex;
-    do {
-        randomIndex = Math.floor(Math.random() * questions.length);
-    } while (randomIndex === currentQuestionIndex);
+    var remainingQuestions = questions.filter(function(question, index) {
+        return index !== currentQuestionIndex;
+    });
 
-    currentQuestionIndex = randomIndex;
+    var randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+    currentQuestionIndex = remainingQuestions[randomIndex];
+
     displayQuestion();
 
     // クイズ回数を増加
@@ -267,12 +286,10 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
-        choices[i].setAttribute("data-index", i); // 選択肢に data-index を設定
     }
 }
 
-function checkAnswer(choiceElement) {
-    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"));
+function checkAnswer(choiceIndex) {
     var currentQuestion = questions[currentQuestionIndex];
 
     if (choiceIndex === currentQuestion.correctIndex) {
@@ -307,11 +324,3 @@ function shuffle(array) {
 
     return array;
 }
-
-// 合計で正解した回数を表示
-function displayTotalCorrectCount() {
-    alert("合計で正解した回数: " + correctCount);
-}
-
-// ページが読み込まれたときに合計正解数を表示
-window.onload = displayTotalCorrectCount;
