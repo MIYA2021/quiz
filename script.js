@@ -274,10 +274,12 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].setAttribute("data-index", i); // 選択肢にデータ属性でインデックスを設定
     }
 }
 
-function checkAnswer(choiceIndex) {
+function checkAnswer(choiceElement) {
+    var choiceIndex = parseInt(choiceElement.getAttribute("data-index"));
     var currentQuestion = questions[currentQuestionIndex];
 
     if (choiceIndex === currentQuestion.correctIndex) {
