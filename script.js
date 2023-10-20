@@ -226,27 +226,13 @@ function initQuiz() {
     currentQuestionIndex = -1;
     quizCount = 0;
     correctCount = 0;
-    showStartScreen();
-}
-
-function showStartScreen() {
-    // スタート画面を表示
-    document.getElementById('start-container').style.display = 'block';
-    document.getElementById('quiz-container').style.display = 'none';
-    document.getElementById('stamp-message').style.display = 'none';
+    nextQuestion();
 }
 
 function startQuiz() {
-    // クイズ初期化
-    initQuiz();
-
-    // スタートボタンを押したらクイズ画面を表示
     document.getElementById('start-container').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
-    document.getElementById('stamp-message').style.display = 'none';
-
-    // 最初の質問を表示
-    nextQuestion();
+    initQuiz();
 }
 
 function nextQuestion() {
@@ -255,7 +241,8 @@ function nextQuestion() {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
-            showStartScreen();
+            document.getElementById('start-container').style.display = 'block';
+            document.getElementById('quiz-container').style.display = 'none';
         } else {
             // リセットしない場合
             alert("お疲れ様でした！\n正解した回数: " + correctCount);
@@ -263,13 +250,12 @@ function nextQuestion() {
         return;
     }
 
-    var remainingQuestions = questions.filter(function(question, index) {
-        return index !== currentQuestionIndex;
-    });
+    var randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === currentQuestionIndex);
 
-    var randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-    currentQuestionIndex = remainingQuestions[randomIndex];
-
+    currentQuestionIndex = randomIndex;
     displayQuestion();
 
     // クイズ回数を増加
