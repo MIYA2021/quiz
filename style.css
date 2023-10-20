@@ -35,23 +35,6 @@ body {
     margin-top: 20px;
 }
 
-#start-button {
-    display: inline-block;
-    padding: 15px 30px;
-    cursor: pointer;
-    border: 2px solid #feba52; /* 濃いオレンジ */
-    border-radius: 8px;
-    background-color: #feba52; /* 濃いオレンジ */
-    color: #1e1e1e; /* 濃い黒色 */
-    font-size: 16px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#start-button:hover {
-    background-color: #1e1e1e; /* 濃い黒色 */
-    color: #feba52; /* 濃いオレンジ */
-}
-
 #quiz-container {
     display: none;
 }
