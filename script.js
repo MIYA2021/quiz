@@ -226,24 +226,6 @@ function initQuiz() {
     currentQuestionIndex = -1;
     quizCount = 0;
     correctCount = 0;
-    showStartScreen();
-}
-
-function showStartScreen() {
-    // クイズ初期化
-    initQuiz();
-
-    // スタート画面を表示
-    document.getElementById('start-container').style.display = 'block';
-    document.getElementById('quiz-container').style.display = 'none';
-}
-
-function startQuiz() {
-    // スタートボタンを押したらクイズ画面を表示
-    document.getElementById('start-container').style.display = 'none';
-    document.getElementById('quiz-container').style.display = 'block';
-
-    // 最初の質問を表示
     nextQuestion();
 }
 
@@ -253,7 +235,7 @@ function nextQuestion() {
         var resetConfirmation = confirm("クイズが終了しました。リセットしますか？\n正解した回数: " + correctCount);
         if (resetConfirmation) {
             // リセットの場合
-            showStartScreen();
+            initQuiz();
         } else {
             // リセットしない場合
             alert("お疲れ様でした！\n正解した回数: " + correctCount);
@@ -261,13 +243,12 @@ function nextQuestion() {
         return;
     }
 
-    var remainingQuestions = questions.filter(function(question, index) {
-        return index !== currentQuestionIndex;
-    });
+    var randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === currentQuestionIndex);
 
-    var randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-    currentQuestionIndex = remainingQuestions[randomIndex];
-
+    currentQuestionIndex = randomIndex;
     displayQuestion();
 
     // クイズ回数を増加
@@ -278,14 +259,23 @@ function nextQuestion() {
 
 function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
-    document.getElementById('question').textContent = currentQuestion.question;
+
+    // 正解の選択肢を保存
+    var correctChoice = currentQuestion.choices[currentQuestion.correctIndex];
 
     // 選択肢をシャッフル
     var shuffledChoices = shuffle(currentQuestion.choices);
 
+    document.getElementById('question').textContent = currentQuestion.question;
+
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+
+        // 正解の選択肢の場合は正しいインデックスを設定
+        if (shuffledChoices[i] === correctChoice) {
+            currentQuestion.correctIndex = i;
+        }
     }
 }
 
@@ -312,15 +302,15 @@ initQuiz();
 // Fisher-Yates シャッフルアルゴリズム
 function shuffle(array) {
     var currentIndex = array.length, randomIndex, tempValue;
-
+  
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-
+  
         tempValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = tempValue;
     }
-
+  
     return array;
 }
