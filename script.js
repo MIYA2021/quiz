@@ -274,6 +274,7 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].style.pointerEvents = 'auto';  // 選択可能に設定
         choices[i].setAttribute("data-index", i); // 選択肢にデータ属性でインデックスを設定
     }
 }
@@ -281,6 +282,12 @@ function displayQuestion() {
 function checkAnswer(choiceElement) {
     var choiceIndex = parseInt(choiceElement.getAttribute("data-index"));
     var currentQuestion = questions[currentQuestionIndex];
+
+    // 選択後に再度選択できないように設定
+    var choices = document.getElementsByClassName('choice');
+    for (var i = 0; i < choices.length; i++) {
+        choices[i].style.pointerEvents = 'none';  // 選択不可に設定
+    }
 
     if (choiceIndex === currentQuestion.correctIndex) {
         // 正解の場合
