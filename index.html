@@ -25,9 +25,11 @@
     <!-- クイズ回数表示 -->
     <div id="quiz-count">クイズ回数: <span id="count">0</span>/5</div>
     <div id="question">質問がここに表示されます。</div>
-    <div class="choice" onclick="checkAnswer(0)">選択肢1</div>
-    <div class="choice" onclick="checkAnswer(1)">選択肢2</div>
-    <div class="choice" onclick="checkAnswer(2)">選択肢3</div>
+<!-- onclick で関数呼び出しを修正 -->
+<div class="choice" onclick="checkAnswer(this)">選択肢1</div>
+<div class="choice" onclick="checkAnswer(this)">選択肢2</div>
+<div class="choice" onclick="checkAnswer(this)">選択肢3</div>
+
     <div id="stamp-message">おめでとうございます！<br>全問正解です！<br>スタンプ一個ゲット!!</div>
 </div>
 
