@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="disney-style.css"> <!-- Disney風のスタイルシートを追加 -->
     <title>ディズニークイズ</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e6c5; /* ベージュ */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
         #rules {
             font-size: 18px;
             margin-bottom: 20px;
@@ -19,22 +32,38 @@
             color: #ff6f61; /* ディズニー風の赤色 */
             margin-top: 20px;
         }
+
+        #start-container {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #start-button {
+            display: inline-block;
+            padding: 15px 30px;
+            cursor: pointer;
+            border: 2px solid #0069aa; /* ディズニー風の青色 */
+            border-radius: 8px;
+            background-color: #fff;
+            color: #0069aa; /* ディズニー風の青色 */
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #start-button:hover {
+            background-color: #0069aa; /* ディズニー風の青色 */
+            color: #fff;
+        }
     </style>
 </head>
 <body>
 
-<div id="quiz-container">
-    <!-- クイズ回数表示 -->
-    <div id="quiz-count">クイズ回数: <span id="count">0</span>/5</div>
-    <div id="question">質問がここに表示されます。</div>
-    <div class="choice" onclick="checkAnswer(0)">選択肢1</div>
-    <div class="choice" onclick="checkAnswer(1)">選択肢2</div>
-    <div class="choice" onclick="checkAnswer(2)">選択肢3</div>
-    <div id="stamp-message">おめでとうございます！<br>全問正解です！<br>スタンプ一個ゲット!!</div>
-</div>
-
-<div id="rules">
-    <p>ディズニークイズへようこそ！</p>
+<div id="start-container">
+    <h1>ディズニークイズへようこそ！</h1>
     <p>以下はクイズのルールです。</p>
     <ol>
         <li>クイズは全5問です。</li>
@@ -43,6 +72,17 @@
         <li>不正解の場合は正解とその説明が表示されます。</li>
         <li>全問正解するとスタンプがもらえます！</li>
     </ol>
+    <button id="start-button" onclick="startQuiz()">スタート</button>
+</div>
+
+<div id="quiz-container" style="display: none;">
+    <!-- クイズ回数表示 -->
+    <div id="quiz-count">クイズ回数: <span id="count">0</span>/5</div>
+    <div id="question">質問がここに表示されます。</div>
+    <div class="choice" onclick="checkAnswer(0)">選択肢1</div>
+    <div class="choice" onclick="checkAnswer(1)">選択肢2</div>
+    <div class="choice" onclick="checkAnswer(2)">選択肢3</div>
+    <div id="stamp-message">おめでとうございます！<br>全問正解です！<br>スタンプ一個ゲット!!</div>
 </div>
 
 <script type="text/javascript" src="script.js"></script>
