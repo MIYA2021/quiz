@@ -267,6 +267,7 @@ function displayQuestion() {
     var choices = document.getElementsByClassName('choice');
     for (var i = 0; i < choices.length; i++) {
         choices[i].textContent = shuffledChoices[i];
+        choices[i].setAttribute('data-index', i); // 選択肢にdata-index属性を設定
     }
 }
 
@@ -313,4 +314,3 @@ function displayTotalCorrectCount() {
 }
 
 // ページが読み込まれたときに合計正解数を表示
-window.onload = displayTotalCorrectCount;
