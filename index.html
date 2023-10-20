@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="disney-style.css"> <!-- Disney風のスタイルシートを追加 -->
     <title>ディズニークイズ</title>
+    <style>
+        #rules {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #stamp-message {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6f61; /* ディズニー風の赤色 */
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,6 +30,19 @@
     <div class="choice" onclick="checkAnswer(0)">選択肢1</div>
     <div class="choice" onclick="checkAnswer(1)">選択肢2</div>
     <div class="choice" onclick="checkAnswer(2)">選択肢3</div>
+    <div id="stamp-message">おめでとうございます！<br>全問正解です！<br>スタンプ一個ゲット!!</div>
+</div>
+
+<div id="rules">
+    <p>ディズニークイズへようこそ！</p>
+    <p>以下はクイズのルールです。</p>
+    <ol>
+        <li>クイズは全5問です。</li>
+        <li>選択肢をクリックして回答してください。</li>
+        <li>正解すると次の質問に進みます。</li>
+        <li>不正解の場合は正解とその説明が表示されます。</li>
+        <li>全問正解するとスタンプがもらえます！</li>
+    </ol>
 </div>
 
 <script type="text/javascript" src="script.js"></script>
